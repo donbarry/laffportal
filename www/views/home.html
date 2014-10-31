@@ -1,6 +1,99 @@
-<ion-view class="bgMain"  title="'iTunes Media Explorer'" left-buttons="leftButtons">
+<ion-view class="bgDark"  title="'LaffPortal'" left-buttons="leftButtons">
     <ion-content id="homeTxt" has-header="true">
-        <div>
+    <div class="list list-inset">
+        <div class="bar bar-header bar-dark">
+          <h1 class="title">New User</h1>
+        </div>
+        <label class="item item-input">
+          <input type="text" placeholder="First Name">
+        </label>
+        <label class="item item-input">
+          <div class="input-label">
+            First Name
+          </div>            
+          <input type="text" placeholder="First Name">
+        </label>
+        <label class="item item-input">
+          <div class="input-label">
+            Last Name
+          </div>            
+          <input type="text" placeholder="Last Name">
+        </label>
+        <label class="item item-input">
+          <div class="input-label">
+            User Name
+          </div>            
+          <input type="text" placeholder="User Name">
+        </label>
+        <label class="item item-input">
+          <div class="input-label">
+            Password
+          </div>        
+          <input type="password" placeholder="Password">
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Gender
+          </div>
+          <select>
+            <option selected>Male</option>
+            <option>Female</option>
+          </select>
+        </label>
+      </div>    
+      <div class="list ">
+        <button class="button button-energized button-block">
+          Sign Up
+        </button>  
+      </div>
+
+    <div class="list list-inset">
+        <div class="bar bar-header bar-dark">
+          <h1 class="title">Existing User</h1>
+        </div>
+        <label class="item item-input">
+          <div class="input-label">
+            User Name
+          </div>            
+          <input type="text" placeholder="User Name">
+        </label>
+        <label class="item item-input">
+          <div class="input-label">
+            User Name
+          </div>            
+          <input type="text" placeholder="User Name">
+        </label>
+        <label class="item item-input">
+          <div class="input-label">
+            Password
+          </div>        
+          <input type="password" placeholder="Password">
+        </label>
+    </div>    
+    <div class="list ">
+        <button class="button button-energized button-block">
+          Login
+        </button>  
+    </div>
+<!-- <ion-slide-box does-continue="true" auto-play="true" slide-interval="3000">  on-slide-changed="slideHasChanged($index)"> 
+
+                <div ng-repeat="singer in singers">
+                    <img ng-src="{{ singer }}" alt="pop singer">
+                </div>
+ -->
+
+<!--   <ion-slide>
+    <div class="box blue"><h1>BLUE</h1></div>
+  </ion-slide>
+  <ion-slide>
+    <div class="box yellow"><h1>YELLOW</h1></div>
+  </ion-slide>
+  <ion-slide>
+    <div class="box pink"><h1>PINK</h1></div>
+  </ion-slide>
+ -->
+<!-- </ion-slide-box>         -->
+<!--         <div>
             <button class="button button-balanced icon-left ion-person-add" ng-click="add()"></button>
             <button class="button button-assertive icon-left ion-ios7-minus" ng-click="remove()"></button>
             <div class="pad-sides" masonry="{columnWidth: 100, gutter: 5, transitionDuration: '.9s',
@@ -11,5 +104,6 @@
                 </div>
             </div>
         </div>
+ -->
     </ion-content>
 </ion-view>

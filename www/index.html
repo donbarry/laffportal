@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
-        <title>iTunes Media Explorer</title>
+        <title>LaffPortal</title>
         <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
         <link href="lib/css/ionic.min.css" rel="stylesheet">
 
@@ -31,6 +31,16 @@
         <script src="js/masonry.pkgd.min.js"></script>
         <script src="js/angular-masonry.js" type="text/javascript"></script>
 
+    <!--<script src="//code.ionicframework.com/1.0.0-beta.12/js/ionic.bundle.js"></script>-->
+
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
+
+
+
     </head>
 
   <body>
@@ -54,11 +64,13 @@
             </header>
           <ion-content has-header="true">
             <ul>
-              <a href="#/menu/home" class="item item-icon-left item-dark"><i class="icon ion-home"></i>Home</a>
               <a href="#/menu/search" class="item item-icon-left item-dark"><i class="icon ion-search"></i>Search</a>
-              <a href="#/menu/settings" class="item item-icon-left item-dark"><i class="icon ion-settings"></i>Settings</a>
-              <a href="#/menu/about" class="item item-icon-left item-dark"><i class="icon ion-information"></i>About</a>
-              <a href="#/menu/mine" class="item item-icon-left item-dark"><i class="icon ion-information"></i>Mine</a>
+              <a href="#/menu/home" class="item item-icon-left item-dark"><i class="icon ion-home"></i>Home</a>
+              <a href="#/menu/settings" class="item item-icon-left item-dark"><i class="icon ion-ios7-videocam"></i>Videos</a>
+              <a href="#/menu/about" class="item item-icon-left item-dark"><i class="icon ion-android-download"></i>Downloads</a>
+              <a href="#/menu/mine" class="item item-icon-left item-dark"><i class="icon ion-briefcase"></i>Accounts</a>
+              <a href="#/menu/mine" class="item item-icon-left item-dark"><i class="icon ion-person-stalker"></i>Events</a>
+              <a href="#/menu/gallery" class="item item-icon-left item-dark"><i class="icon ion-settings"></i>Gallery</a>
             </ul>
           </ion-content>
         </ion-side-menu>

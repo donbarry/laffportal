@@ -1,0 +1,3 @@
+      <div class="photo-list" id="photo-grid">
+        <div class="box photo-item" ng-repeat="photo in photos | orderBy:order:reverse"><img ng-src="{{ photo.photo | thumb:150 }}" alt="Fun Photo" class="box-content" /></div>
+      </div>

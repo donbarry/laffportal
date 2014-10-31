@@ -43,10 +43,11 @@ mediaApp.controller('MainCtrl', function($scope, $ionicSideMenuDelegate,Settings
 mediaApp.controller('HomeCtrl', function ($scope) {
     if ($scope.sideMenuController.isOpen())
         $scope.sideMenuController.toggleLeft();
+    
 })
 
 mediaApp.controller('AboutCtrl', function ($scope) {
-    $scope.navTitle = "About Media Explorer";
+    $scope.navTitle = "About Laffportal";
     if ($scope.sideMenuController.isOpen())
         $scope.sideMenuController.toggleLeft();
 
@@ -98,8 +99,8 @@ mediaApp.controller('SettingsCtrl', function ($scope,SettingsService,$window) {
         };
 })
 
-mediaApp.controller('SearchCtrl', function ($scope,MediaService,$ionicModal,$location,$ionicSideMenuDelegate,SettingsService) {
-        $scope.navTitle = "iTunes Media Search";
+mediaApp.controller('SearchCtrl', function ($scope,MediaService,$ionicModal,$location,$ionicSideMenuDelegate,$sce,SettingsService) {
+        $scope.navTitle = "Laffportal Search";
 
         $scope.rightButtons =  [{
             type: 'button-icon button-clear ion-more',
@@ -113,7 +114,8 @@ mediaApp.controller('SearchCtrl', function ($scope,MediaService,$ionicModal,$loc
         $scope.mediaTypes.type = 'all';
         $scope.sortBy = "artistName";
         $scope.filterTerm = "";
-
+        $scope.myitem={"previewUrl":"http://vimeo.com/96773196","kind":"vimeo","trackName":"just another comedy vid","artistName":"i go die"};
+//<iframe src="//player.vimeo.com/video/96773196" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/96773196">Basketmouth's Girlfriend Exposed</a> from <a href="http://vimeo.com/laffportal">Laffportal Inc</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
         if ($scope.sideMenuController.isOpen())
             $scope.sideMenuController.toggleLeft();
 
@@ -142,7 +144,7 @@ mediaApp.controller('SearchCtrl', function ($scope,MediaService,$ionicModal,$loc
 
         $scope.checkMedia = function(item) {
             console.log("URL " + item.previewUrl + " " + item.kind);
-            if (item.kind==='song' || item.kind==='music-video') {
+            if (item.kind==='song' || item.kind==='music-video' || item.kind==='vimeo') {
                 $scope.openPlayModal(item);
                 $scope.infoTxt = null;
             }
@@ -159,6 +161,10 @@ mediaApp.controller('SearchCtrl', function ($scope,MediaService,$ionicModal,$loc
 
         $scope.openPlayModal = function(item) {
             $scope.url = item.previewUrl;
+            $scope.url="http://vimeo.com/96773196";
+            var valu=$sce.trustAsResourceUrl($scope.url);
+            $scope.url=valu;
+            $scope.kind=item.kind;
             if  (item.trackName != null) $scope.title = item.trackName
             else $scope.title = item.collectionName;
 
@@ -192,8 +198,46 @@ mediaApp.controller('SearchCtrl', function ($scope,MediaService,$ionicModal,$loc
             $scope.sortBy = this.sortBy;
             $scope.sortModal.hide();
         }
+        //accordion stuff
+  $scope.groups = [];
+  $scope.groups[0]={name:"COMEDIANS",items:[{"name":"Basketmouth"},{"name":"IgoDie"},{"name":"Gordon"},{"name":"Bovi"}]};
+  $scope.groups[1]={name:"ARTICLES",items:[{"name":"Wande Cole quits Mavin"},{"name":"Tiwa in London"},{"name":"Dbanj in good music"}]};
+  $scope.groups[2]={name:"PHOTO ALBUMS",items:[{"name":"Party Tins","pic":"party1"},{"name":"Comedians having fun","pic":"party2"},{"name":"Birthday Pics","pic":"party3"}]};
+  $scope.groups[3]={name:"TRENDING VIDEOS",items:[{"name":"Bovi night 2014","vid":"78892086"},{"name":"Naija boy","vid":"86522523"},{"name":"Experredit","vid":"86000997"}]};
+  /*
+  for (var i=0; i<10; i++) {
+    $scope.groups[i] = {
+      name: i,
+      items: []
+    };
+    for (var j=0; j<3; j++) {
+      $scope.groups[i].items.push(i + '-' + j);
+    }
+  }
+  */
+  /*
+   * if given group is the selected group, deselect it
+   * else, select the given group
+   */
+  $scope.toggleGroup = function(group) {
+    if ($scope.isGroupShown(group)) {
+      $scope.shownGroup = null;
+    } else {
+      $scope.shownGroup = group;
+    }
+  };
+  $scope.isGroupShown = function(group) {
+    return $scope.shownGroup === group;
+  };        
 })
 
-
+mediaApp.controller('GalleryCtrl', function($scope, $firebase) {
+  var ref = new Firebase('https://funinph.firebaseio.com/photos');// create an AngularFire reference to the data
+  
+  var sync = $firebase(ref);
+  
+  // download the data into a local object
+  $scope.photos = sync.$asArray();
+});
 
 

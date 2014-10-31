@@ -37,17 +37,28 @@ body {
 .bgMain {
     left-margin: -20px;
     /*margin-top: 7%;*/
-    background-image: url('../img/itunes.jpg');
+    background-image: url('../img/imagebg.jpg');
     background-size: 250px;
     background-repeat: no-repeat;
     background-position:center;
 }
 .bgSearch {
-    background-image: url('../img/itunes.jpg');
+    background-image: url('../img/imagebg.jpg');
     background-size: 250px;
     background-repeat: no-repeat;
     background-position:center;
 }
+.bgDark {
+    /*background-color: #fff;   congruent_outline*/
+    background-image: url('../img/congruent_outline.png');
+    background-size: 350px;
+    background-repeat: repeat;
+    background-position:center;    
+    /*background-size: 250px;
+    background-repeat: no-repeat;
+    background-position:center; */
+}
+
 @media screen and (max-device-width: 640px){
     .fade-bar {
         height: 20px;
@@ -57,4 +68,48 @@ body {
         opacity: 0;
         background-color: #000;
     }
+}
+  .scroll-content {
+    /* background-color: #000; */
+
+  }
+  .trans{
+    /*opacity: 0.5;*/
+    background-position: center;
+    background-color: rgba(255, 0, 0);
+  }
+  img{
+    border:1px solid black;
+  }
+  /* accordion */
+
+/*  body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}*/
+
+/*
+ * http://docs.angularjs.org/api/ng/directive/ngShow#usage_animations
+ */
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
+.unpad
+{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.imgpad
+{
+  text-align: center;
 }

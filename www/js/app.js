@@ -1,7 +1,16 @@
 'use strict';
 
 /* App Module */
-var mediaApp = angular.module('mediaApp', ['ionic','ngResource','wu.masonry'])
+var mediaApp = angular.module('mediaApp', ['ionic','ngResource','wu.masonry','firebase'])
+
+mediaApp.constant('config', {
+  host: 'http://morefunin.ph'
+})
+
+mediaApp.filter('thumb', function(config) {
+  return function(src, size) {
+    return config.host + '/' + src.replace('uploads/', 'thumbs/' + size + 'x' + size + '/')};
+})
 
 mediaApp.config(function($stateProvider, $urlRouterProvider) {
 
@@ -49,6 +58,16 @@ mediaApp.config(function($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        .state('menu.gallery', {
+            url: "/gallery",
+            views: {
+                'menuContent' :{
+                    templateUrl: "views/gallery.html",
+                    controller: "GalleryCtrl"
+                }
+            }
+        })
+
         .state('menu.about', {
             url: "/about",
             views: {

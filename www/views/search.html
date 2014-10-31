@@ -1,11 +1,11 @@
-<ion-view class="bgSearch" title="navTitle" left-buttons="leftButtons" right-buttons="rightButtons">
+<ion-view class="bgDark" title="navTitle" left-buttons="leftButtons" right-buttons="rightButtons">
 
     <ion-content has-header="true">
         <div class="item item-input-inset">
-            <label style="margin-right: 5px;">
+            <label style="margin-right: 2px;">
                 <select ng-model="mediaTypes.type"  ng-change="search()">
-                    <option value="all" selected>All Media</option>
-                    <option value="musicVideo">Video</option>
+                    <option value="all" selected>All Comedy</option>
+                    <option value="musicVideo">Skit</option>
                     <option value="movie">Movie</option>
                     <option value="music">Music</option>
                     <option value="podcast">Podcast</option>
@@ -15,19 +15,121 @@
 
             <label class="item-input-wrapper">
                 <i class="icon ion-search placeholder-icon"></i>
-                <input type="text" placeholder="Search" ng-model="request.query" />
+                <input type="text" placeholder="Search Comedies" ng-model="request.query" />
             </label>
 
-            <button class="button button-positive"  style="margin-left: 5px;" ng-click="search()">
+            <button class="button button-positive button-small"  style="margin-left: 5px;" ng-click="search()">
             Go!
             </button>
 
 
         </div>
+<!-- <div class="item"> -->
+        <ion-slide-box does-continue="true" slide-interval="3000" on-slide-changed="slideChanged(index)">
+          <ion-slide>
+            <div class="row" >
+              <div class="col imgpad"><img src="img4/bovi.jpg" ></div>
+              <div class="col imgpad"><img src="img4/basketmouth.jpg"></div>
+              <div class="col imgpad"><img src="img4/gordon.jpg"></div>
+            </div>          
+          </ion-slide>
+          <ion-slide>
+            <div class="row" >
+              <div class="col imgpad"><img src="img4/igodie.jpg" ></div>
+              <div class="col imgpad"><img src="img4/alibaba.png"></div>
+              <div class="col imgpad"><img src="img4/basketmouth.jpg"></div>
+            </div>          
+          </ion-slide>
+          <ion-slide>
+            <div class="row" >
+              <div class="col imgpad"><img src="img4/gordon.jpg" ></div>
+              <div class="col imgpad"><img src="img4/bovi.jpg"></div>
+              <div class="col imgpad"><img src="img4/basketmouth2.jpg"></div>
+            </div>          
+          </ion-slide>
+        </ion-slide-box>      
+<!-- </div>         -->
+<!-- <div class="card">
+  <div class="item item-divider">
+    I'm a Header in a Card!
+  </div>
+  <div class="item item-text-wrap">
+    This is a basic Card with some text.
+  </div>
+  <div class="item item-divider">
+    I'm a Footer in a Card!
+  </div>
+</div> -->
+      <ion-list> <!-- consider ng-show="infoTxt==null" -->
+        <div ng-repeat="group in groups" class="unpad" ng-show="infoTxt==null">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp;
+            {{group.name}}
+          </ion-item>
+          <div class="unpad">
+          <ion-item class="item-accordion" ng-repeat="item in group.items" ng-show="isGroupShown(group)" ng-if="group.name=='COMEDIANS'" >
+          <!-- <div class="list" ng-show="isGroupShown(group)" ng-repeat="item in items"> -->
+            <a class="item item-thumbnail-left unpad" href="#"  >
+                <img src="img2/{{item.name}}.jpg">
+                <h2>{{item.name}}</h2>
+                <p>He is a master of xxxxx</p>
+            </a>
+          </ion-item>
+            <ion-item class="item-accordion" ng-repeat="item in group.items" ng-show="isGroupShown(group)" ng-if="group.name=='ARTICLES'" >            
+              {{item.name}}
+                <!-- <img src="img2/{{item.name}}.jpg"> 
+                <h2>{{item.name}}</h2>
+                <p>He is a master of xxxxx</p> -->            
+          </ion-item>        
+          <ion-item class="item-accordion" ng-repeat="item in group.items" ng-show="isGroupShown(group)" ng-if="group.name=='PHOTO ALBUMS'" >
+            <a class="item item-thumbnail-left unpad" href="#"  >
+                <img src="img2/{{item.pic}}.jpg">
+                <h2>{{item.name}}</h2>
+                <!-- <p>He is a master of xxxxx</p> -->
+            </a>
+          </ion-item>          
+          <ion-item class="item-accordion" ng-repeat="item in group.items" ng-show="isGroupShown(group)" ng-if="group.name=='TRENDING VIDEOS'" >
+            <a class="item item-thumbnail-left unpad" ng-href="#/menu/mine"  >
+                <img src="img2/{{item.vid}}.jpg">
+                <h2>{{item.name}}</h2>
+                <!-- <p>He is a master of xxxxx</p> -->
+            </a>
+          </ion-item>          
 
-        <div ng-show="infoTxt!=null" style="margin-left:3px;">
-            <label class="assertive">{{infoTxt}}</label>
+          </div>  
+           
+          <!--
+          <ion-item class="item-accordion"
+                    ng-repeat="item in group.items"
+                    ng-show="isGroupShown(group)">
+            {{item.name}}
+          </ion-item>
+          -->
         </div>
+      </ion-list>
+
+      <div class="row item" ng-show="infoTxt==null" >
+        <div class="col imgpad"><a ng-href="#/menu/mine"><img src="img3/alternative.jpg" ></a></div>
+        <div class="col imgpad"><img src="img3/dance.jpg"></div>
+        <div class="col imgpad"><img src="img3/electronic.jpg"></div>
+      </div>        
+      <div class="row item" ng-show="infoTxt==null">
+        <div class="col imgpad"><a ng-click='checkMedia(myitem)'><img src="img3/country.jpg" ></a></div>
+        <div class="col imgpad"><img src="img3/alternative.jpg"></div>
+        <div class="col imgpad"><img src="img3/dance.jpg"></div>
+      </div>        
+
+<!-- <div class="row">
+  <div class="col item imgpad">.col</div>
+  <div class="col item imgpad">.col</div>
+  <div class="col item imgpad">.col</div>
+</div>
+ -->   <div ng-show="infoTxt!=null" style="margin-left:3px;">
+         <label class="assertive">{{infoTxt}}</label>
+       </div>
         <div>
             <div class="row positive-bg" ng-show="mediaResults.resultCount>0">
                 <div class="col light">Cover</div>

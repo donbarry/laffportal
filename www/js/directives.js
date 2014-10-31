@@ -31,3 +31,34 @@ mediaApp.directive('fadeBar', function($timeout) {
         }
     }
 });
+
+//add below for gallery
+mediaApp.directive('photoGrid', function() {
+
+  function link(scope) {
+    
+    function load() {
+    }
+    
+    scope.$watch('photos', function() {
+      if ( typeof photos !== 'undefined' ) {
+        load();
+      }
+    });
+    
+    scope.order = 'timestamp';
+    scope.reverse = true;
+
+  }
+  
+  var directive = {
+    link: link,
+    scope: {
+      photos: '='
+    },
+    templateUrl: 'views/photo-grid.html', //this was a <script id="photo-grid.html" in html file. copied
+    restrict: 'E'
+  };
+  
+  return directive;
+})

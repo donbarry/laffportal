@@ -11,10 +11,11 @@
 
                     <small>by <cite>{{artist}}</cite></small>
                 </blockquote>
-                <video id="vid" width="320" height="240" video-loader autoplay controls>
+                <video id="vid" width="320" height="240" video-loader autoplay controls ng-if="kind!=='vimeo'">
                     {{url}}
                     <source id="vidsrc" ng-src="url" type="video/mp4">
                 </video>
+                <iframe id="vimeoiframe" ng-src="{{url}}" width="320" height="240" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen ng-if="kind==='vimeo'"></iframe>
             </div>
         </div>
     </ion-content>
